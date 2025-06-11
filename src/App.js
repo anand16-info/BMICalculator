@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import BMICard from "./components/BMICard";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={darkMode ? "dark" : ""}>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-grad dark:bg-dark duration-500">
+        
+        {/* Toggle Button */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="absolute top-5 right-5 px-4 py-2 rounded-full bg-btn text-btn shadow-md duration-300"
         >
-          Learn React
-        </a>
-      </header>
+          {darkMode ? "🌙 Dark" : "☀️ Light"}
+        </button>
+
+        <BMICard />
+      </div>
     </div>
   );
 }
